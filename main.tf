@@ -16,7 +16,7 @@ module "testvm" {
  source = "Azure/avm-res-compute-virtualmachine/azurerm"
   version = "0.16.0"
 
-  location            = data.terraform_remote_state.workload.outputs.location
+  location            = data.terraform_remote_state.workload.outputs.resource_group_location
   resource_group_name = data.terraform_remote_state.workload.outputs.resource_group_name
   name                = module.naming.virtual_machine.name_unique
   zone                = 1
