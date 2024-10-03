@@ -27,7 +27,7 @@ module "testvm" {
       ip_configurations = {
         ip_configuration_1 = {
           name                          = "${module.naming.network_interface.name_unique}-ipconfig1"
-          private_ip_subnet_resource_id = azurerm_subnet.this_subnet_1.id
+          private_ip_subnet_resource_id = data.terraform_remote_state.workload.outputs.subnet["wkld_data"]
         }
       }
     }
