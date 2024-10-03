@@ -1,5 +1,4 @@
-
-output "dummy_output" {
-  value       = module.subnets.subnet_id
-  description = "The subnet ID of the newly created subnet"
+output "virtual_machine_name" {
+  value = module.testvm.name
+  description = "The name of the virtual machine."
 }
