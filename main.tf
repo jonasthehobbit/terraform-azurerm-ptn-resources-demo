@@ -16,13 +16,12 @@ module "naming" {
 }
 # Uses the virtual machine module to create a virtual machine with a network interface that is attached to a subnet in the remote state.
 module "testvm" {
-  source  = "Azure/avm-res-compute-virtualmachine/azurerm"
-  version = "0.16.0"
-
+  source              = "Azure/avm-res-compute-virtualmachine/azurerm"
+  version             = "0.16.0"
   location            = data.terraform_remote_state.workload.outputs.resource_group_location
   resource_group_name = data.terraform_remote_state.workload.outputs.resource_group_name
   name                = try(var.vm_config["name"], module.naming.virtual_machine.name_unique)
-  zone                = 1
+  zone                = var.vm_config["zone"]
   sku_size            = var.vm_config.sku_size
   network_interfaces = {
     network_interface_1 = {
