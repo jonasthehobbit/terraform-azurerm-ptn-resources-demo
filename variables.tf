@@ -16,10 +16,9 @@ variable "tags" {
 }
 variable "vm_config" {
   description = "A map of tags to apply to all resources in this example."
-  type = map(object({
+  type = object({
     name     = optional(string)
-    location = optional(string)
     zone     = optional(number, 1)
     sku_size = string
-  }))
+  })
 }
