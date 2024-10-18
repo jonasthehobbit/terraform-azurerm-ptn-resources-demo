@@ -23,7 +23,7 @@ module "testvm" {
   resource_group_name = data.terraform_remote_state.workload.outputs.resource_group_name
   name                = try(var.vm_config["name"], module.naming.virtual_machine.name_unique)
   zone                = 1
-  sku_size            = var.vm_config["sku_size"]
+  sku_size            = var.vm_config.sku_size
   network_interfaces = {
     network_interface_1 = {
       name = module.naming.network_interface.name_unique
